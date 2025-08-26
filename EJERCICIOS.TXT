@@ -1,0 +1,68 @@
+SELECT * FROM Customers 
+WHERE CustomerID LIKE 'A%'
+
+SELECT * FROM Customers
+WHERE CustomerID LIKE '%N'
+
+--CustomerID = Que tengan la letra "o" en el medio
+--CustomerID = Termine en N ===?
+SELECT * FROM Customers
+WHERE CustomerID LIKE '%O%'
+
+SELECT * FROM Customers
+WHERE CustomerID LIKE '__o__'
+ 
+--1MOSTRAR LOS CUSTOMER QUE TENGAN UNA DIRECCION QUE CONTENGA "AV"
+
+SELECT * 
+FROM Customers
+WHERE Address LIKE '%AV%';
+
+--2MOSTRAR TODO LOS CUSTOMERS QUE NO PERTENEZCAN AL PAIS "BRASIL"
+SELECT *
+FROM Customers
+WHERE Country <> 'Brazil';
+
+--3MOSTRAR TODO LOS CUSTOMERS QUE NO TENGAN LA REGION NULL Y CUYO FAX NO SEA"NULL"
+SELECT *
+FROM Customers
+WHERE Region IS NOT NULL
+ AND FAX IS NOT NULL;
+
+ --USO DEL IN
+ SELECT * FROM Employees
+ WHERE TitleOfCourtesy IN ('MS.', 'MR.' ,'MRS.');
+
+ -- MOSTRAR A LOS "EMPLOYES" QUE SEAN DE LA CIUDAD "SEATTLE, TACOMA, REDMOND"
+ SELECT *
+FROM Employees
+WHERE City IN ('Seattle', 'Tacoma', 'Redmond');
+
+--USO DE GROUP BY
+SELECT CiTY, COUNT(*) 'CANTIDAD'   FROM Customers
+GROUP BY CITY
+ORDER BY COUNT(*) DESC
+
+SELECT COUNT(*) FROM Customers; --CONTAR LOS REGISTROS 
+SELECT SUM(UniPrice)from Products; -- sumas los precios unitarios de los productos.
+SELECT AVG(UniPrice) from Products; -- promedio de los precios unitarios
+
+--4 CONTAR TODAS LAS "ORDERS" AGRUPANDO POR EL "SHIPCOUNTRY"
+
+SELECT ShipCountry, COUNT(*) AS TotalOrders
+FROM Orders
+GROUP BY ShipCountry;
+
+
+--5 CONTAR LAS "ORDERS" AGRUPANDO POR EL "SHIPCITY"
+
+SELECT ShipCity, COUNT(*) AS TotalOrders
+FROM Orders
+GROUP BY ShipCity
+ORDER BY TotalOrders DESC;
+
+-- 6 SUMAS TODO LOS "UNITPRICE" DE LOS "PRODUCTS AGRUPANDO POR "CATEGORYID"
+
+SELECT CategoryID, SUM(UnitPrice)
+FROM Products
+GROUP BY CategoryID;
