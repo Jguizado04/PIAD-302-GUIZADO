@@ -1,4 +1,4 @@
-  1  composer global require laravel/installer
+ 1  composer global require laravel/installer
     2  composer global require laravel/installer
     3  laravel new example55
     4  composer global require laravel/installer
@@ -31,4 +31,3 @@
    31  git status
    32  git push -u origin main
    33  history
-
